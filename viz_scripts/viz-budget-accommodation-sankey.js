@@ -33,7 +33,7 @@ class BudgetAccommodationSankey {
     async render(container) {
         try {
             // Load CSV data
-            const csvData = await this.loadCSV('../data/cleaned_data.csv');
+            const csvData = await this.loadCSV('data/cleaned_data.csv');
             
             // Process data to extract three-stage flows
             const flowData = this.processMultiStageFlowData(csvData);

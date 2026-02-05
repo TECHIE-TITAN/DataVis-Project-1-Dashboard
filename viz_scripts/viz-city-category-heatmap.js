@@ -19,7 +19,7 @@ class CityCategoryHeatmap {
     async render(container) {
         try {
             // Load CSV data
-            const csvData = await this.loadCSV('../data/cleaned_data.csv');
+            const csvData = await this.loadCSV('data/cleaned_data.csv');
             
             // Process data to create heatmap matrix
             const { matrix, topCities, categories, maxValue } = this.processHeatmapData(csvData);

@@ -19,7 +19,7 @@ class SeasonCitiesDivergingChart {
     async render(container) {
         try {
             // Load CSV data
-            const csvData = await this.loadCSV('../data/cleaned_data.csv');
+            const csvData = await this.loadCSV('data/cleaned_data.csv');
             
             // Process data to get top cities with summer/winter counts
             const cityData = this.processCitySeasonData(csvData);
