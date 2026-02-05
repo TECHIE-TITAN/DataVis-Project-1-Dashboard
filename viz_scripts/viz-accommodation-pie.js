@@ -15,7 +15,7 @@ class AccommodationPieChart {
     
     async render(container) {
         // Load CSV data directly
-        const csvData = await this.loadCSV('../data/cleaned_data.csv');
+        const csvData = await this.loadCSV('data/cleaned_data.csv');
         
         if (!csvData || csvData.length === 0) {
             container.innerHTML = '<p style="color: #6b7280;">No data available</p>';
@@ -251,7 +251,7 @@ class AccommodationPieChart {
         description.className = 'viz-description';
         description.style.cssText = `
             padding: 16px;
-            margin-top: 36px;
+            margin-top: 24px;
             background: #000000;
             border-left: 3px solid #fbbf24;
             color: #d1d5db;

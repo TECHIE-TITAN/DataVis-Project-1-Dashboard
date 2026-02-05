@@ -19,7 +19,7 @@ class DestinationsWordCloud {
     async render(container) {
         try {
             // Load CSV data
-            const csvData = await this.loadCSV('../data/cleaned_data.csv');
+            const csvData = await this.loadCSV('data/cleaned_data.csv');
             
             // Process data to count city frequencies
             const cityData = this.processCityData(csvData);
