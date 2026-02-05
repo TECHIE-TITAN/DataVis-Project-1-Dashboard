@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Data Visualization Dashboard</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+    <script src="https://unpkg.com/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="title">Travel Data Visualization Dashboard</h1>
+        </div>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <main class="dashboard">
+        <div class="container">
+            <div class="grid">
+                <!-- Visualization 1: Travel Category Distribution -->
+                <section class="viz-section" data-viz-id="6" role="button" tabindex="0" aria-label="Open Travel Category Distribution visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">01</span>
+                        <h2 class="viz-title">Travel Category Distribution</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-6-preview">
+                        <div class="placeholder">Vertical Bar Chart</div>
+                    </div>
+                    <p class="viz-description">Frequency of travel categories</p>
+                </section>
+
+                <!-- Visualization 2: Top 10 Destinations by Category -->
+                        <section class="viz-section" data-viz-id="12" role="button" tabindex="0" aria-label="Open Top 10 Destinations by Category visualization">
+                            <div class="viz-header">
+                                <span class="viz-number">02</span>
+                                <h2 class="viz-title">Top 10 Destinations by Category</h2>
+                            </div>
+                            <div class="viz-preview" id="viz-12-preview">
+                                <div class="placeholder">Heatmap</div>
+                            </div>
+                            <p class="viz-description">Cities and travel categories</p>
+                        </section>
+
+                <!-- Visualization 3: Popular Destinations -->
+                <section class="viz-section" data-viz-id="9" role="button" tabindex="0" aria-label="Open Popular Destinations visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">03</span>
+                        <h2 class="viz-title">Popular Destinations</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-9-preview">
+                        <div class="placeholder">Word Cloud</div>
+                    </div>
+                    <p class="viz-description">Most frequent travel destinations</p>
+                </section>
+
+                <!-- Visualization 4: Top Most Mentioned Cities -->
+                <section class="viz-section" data-viz-id="4" role="button" tabindex="0" aria-label="Open Top Most Mentioned Cities visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">04</span>
+                        <h2 class="viz-title">Top Most Mentioned Cities</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-4-preview">
+                        <div class="placeholder">Horizontal Bar Chart</div>
+                    </div>
+                    <p class="viz-description">Ranked popularity of destinations</p>
+                </section>
+
+                <!-- Visualization 5: Where Do People Go? -->
+                <section class="viz-section" data-viz-id="7" role="button" tabindex="0" aria-label="Open Where Do People Go visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">05</span>
+                        <h2 class="viz-title">Where Do People Go?</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-7-preview">
+                        <div class="placeholder">Metro-Style Sankey</div>
+                    </div>
+                    <p class="viz-description">Country to destination city flows</p>
+                </section>
+
+                <!-- Visualization 6: Season vs. Location -->
+                <section class="viz-section" data-viz-id="13" role="button" tabindex="0" aria-label="Open Season vs Location visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">06</span>
+                        <h2 class="viz-title">Season vs. Location</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-13-preview">
+                        <div class="placeholder">Bubble Chart</div>
+                    </div>
+                    <p class="viz-description">Destination popularity by season</p>
+                </section>
+
+                <!-- Visualization 7: Social Group Preference -->
+                <section class="viz-section" data-viz-id="3" role="button" tabindex="0" aria-label="Open Social Group Preference visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">07</span>
+                        <h2 class="viz-title">Social Group Preference</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-3-preview">
+                        <div class="placeholder">Vertical Bar Chart</div>
+                    </div>
+                    <p class="viz-description">Travel prompts by social groups</p>
+                </section>
+
+                <!-- Visualization 8: Social Group vs. Travel Purpose -->
+                <section class="viz-section" data-viz-id="11" role="button" tabindex="0" aria-label="Open Social Group vs Travel Purpose visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">08</span>
+                        <h2 class="viz-title">Social Group vs. Travel Purpose</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-11-preview">
+                        <div class="placeholder">Heatmap</div>
+                    </div>
+                    <p class="viz-description">Correlation between groups and activities</p>
+                </section>
+
+                <!-- Visualization 9: How Do People Travel? -->
+                <section class="viz-section" data-viz-id="2" role="button" tabindex="0" aria-label="Open How Do People Travel visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">09</span>
+                        <h2 class="viz-title">How Do People Travel?</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-2-preview">
+                        <div class="placeholder">Pie Chart</div>
+                    </div>
+                    <p class="viz-description">Distribution of travel modes</p>
+                </section>
+
+                <!-- Visualization 10: Where Do People Like to Stay? -->
+                <section class="viz-section" data-viz-id="1" role="button" tabindex="0" aria-label="Open Where Do People Like to Stay visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">10</span>
+                        <h2 class="viz-title">Where Do People Like to Stay?</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-1-preview">
+                        <div class="placeholder">Pie Chart</div>
+                    </div>
+                    <p class="viz-description">Proportional distribution of accommodation preferences</p>
+                </section>
+
+                <!-- Visualization 11: Accommodation on World Map -->
+                <section class="viz-section" data-viz-id="5" role="button" tabindex="0" aria-label="Open Accommodation on World Map visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">11</span>
+                        <h2 class="viz-title">Accommodation on World Map</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-5-preview">
+                        <div class="placeholder">Dot/Bubble Plot</div>
+                    </div>
+                    <p class="viz-description">Geographic distribution of accommodations</p>
+                </section>
+
+                <!-- Visualization 12: Destination, Budget & Accommodation -->
+                <section class="viz-section" data-viz-id="8" role="button" tabindex="0" aria-label="Open Destination Budget and Accommodation Flow visualization">
+                    <div class="viz-header">
+                        <span class="viz-number">12</span>
+                        <h2 class="viz-title">Destination, Budget & Accommodation</h2>
+                    </div>
+                    <div class="viz-preview" id="viz-8-preview">
+                        <div class="placeholder">Multi-Stage Sankey</div>
+                    </div>
+                    <p class="viz-description">Country → Budget → Accommodation flow</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Fullscreen Modal -->
+    <div class="fullscreen-modal" id="fullscreenModal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-btn" id="closeBtn" aria-label="Close fullscreen view">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-viz-title"></h2>
+            </div>
+            <div class="modal-body">
+                <div class="viz-fullscreen" id="fullscreenViz"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualization Module Scripts -->
+    <script src="viz_scripts/viz-accommodation-pie.js"></script>
+    <script src="viz_scripts/viz-travel-mode-pie.js"></script>
+    <script src="viz_scripts/viz-social-group-bar.js"></script>
+    <script src="viz_scripts/viz-top-cities-bar.js"></script>
+    <script src="viz_scripts/viz-world-map-accommodations.js"></script>
+    <script src="viz_scripts/viz-travel-category-bar.js"></script>
+    <script src="viz_scripts/viz-country-city-sankey.js"></script>
+    <script src="viz_scripts/viz-budget-accommodation-sankey.js"></script>
+    <script src="viz_scripts/viz-destinations-wordcloud.js"></script>
+    <script src="viz_scripts/viz-social-purpose-heatmap.js"></script>
+    <script src="viz_scripts/viz-city-category-heatmap.js"></script>
+    <script src="viz_scripts/viz-season-cities-diverging.js"></script>
+    <script src="viz_scripts/viz-travel-duration-histogram.js"></script>
+    
+    <!-- Main Dashboard Controller Script -->
+    <script src="script.js"></script>
+</body>
+</html>
